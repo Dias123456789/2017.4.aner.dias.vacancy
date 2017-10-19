@@ -6,51 +6,63 @@ import kz.greetgo.education.controller.model.ClientInfo;
 import kz.greetgo.education.controller.register.ClientRegister;
 import kz.greetgo.education.stand.register_stand_impl.db.Db;
 import kz.greetgo.education.stand.register_stand_impl.model.ClientDot;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
+import java.util.Random;
 
 @Bean
 public class ClientRegisterStandImpl implements ClientRegister{
+
     public BeanGetter<Db> db;
 
     @Override
-    public ClientInfo getClientInfoMethod(String id){
-        ClientDot tmp =  db.get().clientStorage.get(id);
-        ClientInfo out = new ClientInfo(tmp.id,tmp.name,tmp.surname,tmp.patr,tmp.age);
-        return out;
-    }
-
-    @Override
-    public List<ClientInfo> getClientsList(){
-        List<ClientInfo> list = new ArrayList<>();
-        for(String id: db.get().clientStorage.keySet()){
-            ClientDot db_cl = db.get().clientStorage.get(id);
-            ClientInfo ctrl_cl = new ClientInfo(db_cl.id,db_cl.name,db_cl.surname, db_cl.patr, db_cl.age);
-            list.add(ctrl_cl);
+    public List<ClientInfo> getClientList() {
+        List<ClientInfo> clientInfo = new ArrayList<ClientInfo>();
+        for(ClientDot clientDot : db.get().clientStorage.values()){
+            ClientInfo ci = new ClientInfo(clientDot.id,clientDot.name,clientDot.surname,clientDot.patr,clientDot.age);
+            clientInfo.add(ci);
         }
-        return list;
-    }
-
-    @Override
-    public String saveClient(String id, ClientInfo cl){
-        if(id==""){
-            String uuid = UUID.randomUUID().toString();
-            ClientDot tmp = new ClientDot(uuid, cl.name, cl.surname, cl.patr, cl.age);
-            db.get().clientStorage.put(uuid, tmp);
-        }else{
-            ClientDot x = new ClientDot(id, cl.name, cl.surname, cl.patr, cl.age);
-            db.get().clientStorage.remove(id);
-            db.get().clientStorage.put(id, x);
-        }
-        return "Ok";
+        return clientInfo;
     }
 
 
     @Override
-    public String deleteClient(String id){
+    public String getClientDelete(String json) {
+        JSONObject obj = new JSONObject(json);
+        String id = obj.getString("id");
+        System.out.println(id);
         db.get().clientStorage.remove(id);
-        return "Ok";
+        return "Ok delete";
+    }
+
+    @Override
+    public String getClientAdd(String json) {
+        System.out.println(json);
+        JSONObject obj = new JSONObject(json);
+        String id = obj.getString("id");
+        String name = obj.getString("name");
+        String surname = obj.getString("surname");
+        String patr = obj.getString("patr");
+        String age = obj.getString("age");
+
+        System.out.print(id);
+        if(id.length()==0) {
+            Random random =new Random();
+            long a=random.nextLong();
+            db.get().clientStorage.put(""+a,new ClientDot(""+a,name,surname,patr,age));
+            return "Ok insert";
+        }
+        else{
+            ClientDot ci = db.get().clientStorage.get(id);
+            ci.setAge(age);
+            ci.setPatr(patr);
+            ci.setSurname(surname);
+            ci.setName(name);
+            db.get().clientStorage.put(id,ci);
+            return "Ok update";
+        }
     }
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>Manage Site</title>
+    <!--<link href="css/lib.css" rel="stylesheet">-->
+    <!--<link rel="stylesheet" href="stylesheets/all.css" media="screen" title="no title" charset="utf-8">-->
+    <!--<link rel="stylesheet" href="main.css" media="screen" title="no title" charset="utf-8">-->
+</head>
+<body>
+<div class="users">
+    <table>
+        <button ng-click="add()">Add</button>
+        <button ng-click="edit()"  value="Edit" ng-disabled="disButtons">Edit</button>
+        <button ng-click="delete(mainSelectedId)" ng-disabled="disButtons">Delete</button>
+    </tr>
+    </table>
+        <table>
+            <tr>
+                <td>Age</td>
+                <td>Name</td>
+                <td>Surname</td>
+                <td>Patr</td>
+                <td>ID</td>
+            </tr>
+            <tr ng-repeat="n in data" class="line">
+                <td ng-click="myFunc(n.id)">{{n.id}}</td>
+                <td ng-click="myFunc(n.id)">{{n.name}}</td>
+                <td ng-click="myFunc(n.id)">{{n.surname}}</td>
+                <td ng-click="myFunc(n.id)">{{n.patr}}</td>
+                <td ng-click="myFunc(n.id)">{{n.age}}</td>
+                <td><input type="radio" ></td>
+            </tr>
+            <tr>
+                <td><input type="text" ng-model="selectedName"></td>
+                <td><input type="text" ng-model="selectedSurname"></td>
+                <td><input type="text" ng-model="selectedPatr"></td>
+                <td><input type="text" ng-model="selectedAge"></td>
+
+                <td>{{mainSelectedId}}</td>
+            </tr>
+        </table>
+</div>
+</body>
+</html>

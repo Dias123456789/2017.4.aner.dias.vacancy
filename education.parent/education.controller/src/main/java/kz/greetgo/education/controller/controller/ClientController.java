@@ -6,49 +6,29 @@ import kz.greetgo.education.controller.model.ClientInfo;
 import kz.greetgo.education.controller.register.ClientRegister;
 import kz.greetgo.education.controller.utils.Controller;
 import kz.greetgo.mvc.annotations.Mapping;
-import kz.greetgo.mvc.annotations.Par;
 import kz.greetgo.mvc.annotations.ToJson;
+import kz.greetgo.mvc.annotations.RequestInput;
 
 import java.util.List;
 
 @Bean
 @Mapping("/client")
-public class ClientController implements Controller {
+public class ClientController implements Controller{
     public BeanGetter<ClientRegister> clientRegister;
 
-
     @ToJson
-    @Mapping("/getById")
-    public ClientInfo getClientByIdInController(@Par("id") String id){
-        return clientRegister.get().getClientInfoMethod(id);
+    @Mapping("/list")
+    public List<ClientInfo> getClientList() {
+        return clientRegister.get().getClientList();
     }
-
-
     @ToJson
-    @Mapping("/getAll")
-    public List<ClientInfo> getAll(){
-        return clientRegister.get().getClientsList();
+    @Mapping("/delete")
+    public String getClientDelete(@RequestInput String json) {
+        return clientRegister.get().getClientDelete(json);
     }
-
     @ToJson
-    @Mapping("/saveCl")
-    public String saveClient(@Par("name") String name, @Par("surname") String surname, @Par("patr") String patr, @Par("age") String age){
-        String id = "";
-        ClientInfo tmp = new ClientInfo(id,name,surname,patr, age);
-        return clientRegister.get().saveClient(id,tmp);
+    @Mapping("/add")
+    public String getClientAdd(@RequestInput String json) {
+        return clientRegister.get().getClientAdd(json);
     }
-
-    @ToJson
-    @Mapping("/updateCl")
-    public String updateClient(@Par("id") String id,@Par("name") String name, @Par("surname") String surname, @Par("patr") String patr, @Par("age") String age){
-        ClientInfo tmp = new ClientInfo(id,name,surname,patr, age);
-        return clientRegister.get().saveClient(id,tmp);
-    }
-
-    @ToJson
-    @Mapping("/deleteCl")
-    public String deleteClient(@Par("id") String id){
-        return clientRegister.get().deleteClient(id);
-    }
-
 }

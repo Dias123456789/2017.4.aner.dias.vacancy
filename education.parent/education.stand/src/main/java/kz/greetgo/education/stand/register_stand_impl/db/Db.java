@@ -84,7 +84,7 @@ public class Db implements HasAfterInject{
 //    personRoleMapping.put("admin_can_see_part","admin_part");
 
 
-    DictionaryDot value1 = new DictionaryDot();
+    /*DictionaryDot value1 = new DictionaryDot();
     value1.code = "iphone";
     value1.title = "IPhone X";
     dictionaryStorage.put("iphone", value1);
@@ -93,9 +93,9 @@ public class Db implements HasAfterInject{
     value2.code = "Samsung";
     value2.title = "Samsung Galaxy Note";
     dictionaryStorage.put("samsung", value2);
-
-    ClientDot cl1 = new ClientDot("1","Dias","Aner","Mukhtarovich","21");
-    ClientDot cl2 = new ClientDot("2","Diaz","Marko","Senquella","35");
+*/
+    ClientDot cl1 = new ClientDot("21","Dias","Aner","Mukhtarovich","1");
+    ClientDot cl2 = new ClientDot("35","Diaz","Marko","Senquella","2");
 
     clientStorage.put("1",cl1);
     clientStorage.put("2",cl2);

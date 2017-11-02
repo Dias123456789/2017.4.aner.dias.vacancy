@@ -5,11 +5,92 @@ angular.module('MyApp', ['ui.router'])
         $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/');
         $stateProvider
+            .state('log', {
+                url: '/',
+                templateUrl: '../views/log.html',
+                controller: function($scope,$rootScope,$state,$http) {
+
+                    $scope.mainSelectedId = null;
+                    $scope.disButtons = true;
+                    $scope.newuser = function () {
+                        var data = {
+                            "UserN": $scope.selectedUserN,
+                            "UserS": $scope.selectedUserS,
+                            "Email": $scope.selectedEmail,
+                            "Password": $scope.selectedPassword,
+                            "Activate": "0"
+                        };
+                        $http.post("http://localhost:1314/education/api/reg/NewUser", data, {
+                            headers: {
+                                'Content-Type': "x-www-form-urlencoded"
+                            }
+                        }).then(function (response) {
+                            console.log(data);
+                            console.log(response.data);
+                            $scope.selectedUserN = null;
+                            $scope.selectedUserS = null;
+                            $scope.selectedEmail = null;
+                            $scope.selectedPassword = null;
+                            $scope.selectedActivate = null;
+                            $scope.disButtons = true;
+                            $scope.list();
+                        });
+                    }
+
+
+
+                    $scope.userlog = function (UserN, Password,Activate) {
+                        var data = {
+                            "UserN": $scope.selectedUserL,
+                            "Password": $scope.selectedPas
+                        };
+                        $http.post("http://localhost:1314/education/api/reg/NewUser", data, {
+                            headers: {
+                                'Content-Type': "x-www-form-urlencoded"
+                            }
+                        }).then(function (response) {
+                            console.log(data);
+                            console.log(response.data);
+                            $scope.selectedUserL = null;
+                            $scope.selectedPas = null;
+                            $scope.disButtons = true;
+                            $scope.list();
+                        });
+
+                    }
+
+                    $scope.useredit = function () {
+                        var data = {
+                            "active" : $scope.selectedActivate
+                        };
+
+                        $http.post("http://localhost:1314/education/api/reg/NewUser",data,{
+                            headers:{
+                                'Content-Type': "x-www-form-urlencoded"
+                            }
+                        }).then(function(response){
+                            console.log(data);
+                            console.log(response.data);
+                            $scope.selectedActivate=null;
+                            $scope.disButtons=true;
+                            $scope.list();
+                        });
+                    }
+
+
+
+                }
+            })
+
+
             .state('any', {
                 url: '/',
                 templateUrl: '../views/clientList.html',
                 controller: function($scope,$rootScope,$state,$http){
                     $scope.mainSelectedId = null;
+
+
+
                     $scope.disButtons = true;
                     $scope.list=function(){
                         $http({
@@ -75,6 +156,7 @@ angular.module('MyApp', ['ui.router'])
                     }
 
 
+
                     $scope.add = function () {
                         var data = {
                             "id" : "",
@@ -134,5 +216,8 @@ angular.module('MyApp', ['ui.router'])
 
                     $scope.list();
                 }
-            });
+            })
+
+        ;
+
     }]);

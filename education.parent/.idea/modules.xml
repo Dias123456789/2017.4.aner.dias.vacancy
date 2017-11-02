@@ -11,6 +11,9 @@
       <module fileurl="file://$PROJECT_DIR$/education.parent.iml" filepath="$PROJECT_DIR$/education.parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/education.parent_main.iml" filepath="$PROJECT_DIR$/.idea/modules/education.parent_main.iml" group="education.parent" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/education.parent_test.iml" filepath="$PROJECT_DIR$/.idea/modules/education.parent_test.iml" group="education.parent" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/education.register/education.register.iml" filepath="$PROJECT_DIR$/.idea/modules/education.register/education.register.iml" group="education.register" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/education.register/education.register_main.iml" filepath="$PROJECT_DIR$/.idea/modules/education.register/education.register_main.iml" group="education.register" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/education.register/education.register_test.iml" filepath="$PROJECT_DIR$/.idea/modules/education.register/education.register_test.iml" group="education.register" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/education.stand/education.stand.iml" filepath="$PROJECT_DIR$/.idea/modules/education.stand/education.stand.iml" group="education.stand" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/education.stand/education.stand_main.iml" filepath="$PROJECT_DIR$/.idea/modules/education.stand/education.stand_main.iml" group="education.stand" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/education.stand/education.stand_test.iml" filepath="$PROJECT_DIR$/.idea/modules/education.stand/education.stand_test.iml" group="education.stand" />

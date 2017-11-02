@@ -20,6 +20,9 @@ public class Db implements HasAfterInject{
   public final Map<String, DictionaryDot> dictionaryStorage = new HashMap<>();
   public final Map<String, ClientDot> clientStorage = new HashMap<>();
 
+  public final Map<String, registerDot> registerStorage = new HashMap<>();
+
+  public final Map<String, String> userStorage = new HashMap<>();
 
   @Override
   public void afterInject() throws Exception {
@@ -94,11 +97,14 @@ public class Db implements HasAfterInject{
     value2.title = "Samsung Galaxy Note";
     dictionaryStorage.put("samsung", value2);
 */
+    /*
     ClientDot cl1 = new ClientDot("21","Dias","Aner","Mukhtarovich","1");
     ClientDot cl2 = new ClientDot("35","Diaz","Marko","Senquella","2");
 
     clientStorage.put("1",cl1);
-    clientStorage.put("2",cl2);
+    clientStorage.put("2",cl2);*/
 
+    registerDot r1 = new registerDot("Dias","Aner", "140103014@stu.sdu.edu.kz","qwerty123","1","1");
+    registerStorage.put("1",r1);
   }
 }

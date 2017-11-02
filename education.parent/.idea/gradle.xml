@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/education.client" />
             <option value="$PROJECT_DIR$/education.controller" />
+            <option value="$PROJECT_DIR$/education.register" />
             <option value="$PROJECT_DIR$/education.stand" />
           </set>
         </option>

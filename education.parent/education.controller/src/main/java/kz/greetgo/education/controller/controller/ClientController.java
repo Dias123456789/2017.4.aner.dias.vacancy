@@ -31,4 +31,5 @@ public class ClientController implements Controller{
     public String getClientAdd(@RequestInput String json) {
         return clientRegister.get().getClientAdd(json);
     }
+
 }

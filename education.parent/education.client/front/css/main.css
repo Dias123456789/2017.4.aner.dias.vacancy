@@ -1,8 +1,16 @@
-table{
+div.register{
+    width: 200px;
+    height: 200px;
     position: absolute;
-    left: 20%;
-    border: 1px solid black;
+    top: 20%;
+    left: 40%;
 }
 
-
+div.login{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 60%;
+    top: 20%;
+}
 

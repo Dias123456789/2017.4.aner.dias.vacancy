@@ -65,4 +65,6 @@ public class ClientRegisterStandImpl implements ClientRegister{
             return "Ok update";
         }
     }
+
+
 }

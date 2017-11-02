@@ -1,5 +1,6 @@
 package kz.greetgo.education.stand.register_stand_impl.model;
 
+
 public class ClientDot {
     public String id;
     public String name;
